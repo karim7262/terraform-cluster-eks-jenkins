@@ -68,7 +68,7 @@ resource "nirmata_cluster_type_eks" "eks-cluster-1-31" {
 
   nodepools {
     name                = "default"
-    instance_type       = "t3.small"
+    instance_type       = "t3.medium"
     disk_size           = 60
     ssh_key_name        = "eu-central-key"
     security_groups     = ["sg-0acabab6d341XXXXX"]
