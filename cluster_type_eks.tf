@@ -11,9 +11,9 @@ provider "nirmata" {
      url = "https://nirmata.io"
 }
 
-resource "nirmata_cluster_type_gke" "gke-cluster-type-1-30" {
+resource "nirmata_cluster_type_gke" "gke-cluster-type-1-32" {
 
-  name                       = "tf-gke-cluster-type_alex" 
+  name                       = "alex02-tf-gke-cluster-type_alex" 
   version                    = "1.19.10-gke.1600"
   credentials                = "automation-gcp"
   location_type              = "Zonal"
@@ -48,8 +48,8 @@ resource "nirmata_cluster_type_gke" "gke-cluster-type-1-30" {
     }
   }
 }
-resource "nirmata_cluster_type_eks" "eks-cluster-1-31" {
-  name                      = "alex01-t3small-tf-github-eks-cluster"
+resource "nirmata_cluster_type_eks" "eks-cluster-1-32" {
+  name                      = "alex02-t3small-tf-github-eks-cluster"
   version                   = "1.19"
   credentials               = "aws-apicluster"
   region                    = "us-west-1"
