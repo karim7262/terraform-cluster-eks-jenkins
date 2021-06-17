@@ -78,7 +78,7 @@ resource "nirmata_cluster_type_eks" "eks-cluster-1-34" {
 
 resource "nirmata_cluster" "eks-eu-34" {
   name = "alex04-t3medium-tf-github-eks-cluster"
-  cluster_type = "eks-eu-prod"
+  cluster_type = "alex04-t3medium-tf-github-eks-cluster"
   labels  = {foo = "bar"}
    nodepools {
       node_count                = 1 
