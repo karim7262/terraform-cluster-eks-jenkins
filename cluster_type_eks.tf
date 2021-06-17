@@ -74,6 +74,30 @@ resource "nirmata_cluster_type_eks" "eks-cluster-type-1" {
     security_groups     = ["sg-0acabab6d341XXXXX"]
     iam_role            = "arn:aws:iam::844333597536:role/XXXXXX"
   }
+
+  addons {
+    name            = "vault-agent-injector"
+    addon_selector  = "vault-agent-injector"
+    catalog         = "default-catalog"
+    channel         = "Stable"
+    sequence_number = 1
+  }
+
+  vault_auth {
+    name             = "vault-auth"
+    path             = "nirmata/$(cluster.name)"
+    addon_name       = "vault-agent-injector"
+    credentials_name = "vault_access"
+    delete_auth_path = true
+
+    roles {
+      name                 = "sample-role"
+      service_account_name = "application-sample-sa"
+      namespace            = "application-sample-ns"
+      policies             = "application-sample-policy"
+    }
+  }
+
 }
 
 resource "nirmata_cluster" "eks-cluster-1" {
