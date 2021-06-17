@@ -48,8 +48,8 @@ provider "nirmata" {
 #     }
 #   }
 # }
-resource "nirmata_cluster_type_eks" "eks-cluster-type-1" {
-  name                      = "tf-eks-cluster-type-1"
+resource "nirmata_cluster_type_eks" "eks-cluster-type-2" {
+  name                      = "tf-eks-cluster-type-2"
   version                   = "1.19"
   credentials               = "aws-apicluster"
   region                    = "us-west-1"
@@ -102,6 +102,6 @@ resource "nirmata_cluster_type_eks" "eks-cluster-type-1" {
 
 resource "nirmata_cluster" "eks-cluster-1" {
   name                 = "eks-cluster-1"
-  cluster_type         = nirmata_cluster_type_eks.eks-cluster-type-1.name
+  cluster_type         = nirmata_cluster_type_eks.eks-cluster-type-2.name
   node_count           = 1
 }
