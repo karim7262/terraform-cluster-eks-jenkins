@@ -83,20 +83,20 @@ resource "nirmata_cluster_type_eks" "eks-cluster-type-1" {
     sequence_number = 1
   }
 
-  # vault_auth {
-  #   name             = "vault-auth"
-  #   path             = "nirmata/$(cluster.name)"
-  #   addon_name       = "vault-agent-injector"
-  #   credentials_name = "vault_access"
-  #   delete_auth_path = true
+  vault_auth {
+    name             = "vault-auth"
+    path             = "nirmata/$(cluster.name)"
+    addon_name       = "vault-agent-injector"
+    credentials_name = "vault_access"
+    delete_auth_path = true
 
-  #   roles {
-  #     name                 = "sample-role"
-  #     service_account_name = "application-sample-sa"
-  #     namespace            = "application-sample-ns"
-  #     policies             = "application-sample-policy"
-  #   }
-  # }
+    roles {
+      name                 = "sample-role"
+      service_account_name = "application-sample-sa"
+      namespace            = "application-sample-ns"
+      policies             = "application-sample-policy"
+    }
+  }
 
 }
 
