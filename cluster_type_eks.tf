@@ -48,8 +48,8 @@ provider "nirmata" {
 #     }
 #   }
 # }
-resource "nirmata_cluster_type_eks" "eks-cluster-1-35" {
-  name                      = "alex05-t3medium-tf-github-eks-cluster"
+resource "nirmata_cluster_type_eks" "eks-cluster-1-36" {
+  name                      = "eks-cluster-1-36"
   version                   = "1.19"
   credentials               = "aws-apicluster"
   region                    = "us-west-1"
@@ -78,7 +78,7 @@ resource "nirmata_cluster_type_eks" "eks-cluster-1-35" {
 
 resource "nirmata_cluster" "eks-eu-34" {
   name = "eks-eu-1"
-  cluster_type = "alex05-t3medium-tf-github-eks-cluster"
+  cluster_type = nirmata_cluster_type_eks.eks-cluster-1-36.name
   # labels  = {foo = "bar"}
   node_count = 1
 
