@@ -79,12 +79,14 @@ resource "nirmata_cluster_type_eks" "eks-cluster-1-34" {
 resource "nirmata_cluster" "eks-eu-34" {
   name = "alex04-t3medium-tf-github-eks-cluster"
   cluster_type = "alex04-t3medium-tf-github-eks-cluster"
-  labels  = {foo = "bar"}
-   nodepools {
-      node_count                = 1 
-      enable_auto_scaling       = false
-      min_count                 = 1
-      max_count                 = 4
-   }
-   delete_action = "remove"
+  # labels  = {foo = "bar"}
+  node_count = 1
+
+  #  nodepools {
+  #     node_count                = 1 
+  #     enable_auto_scaling       = false
+  #     min_count                 = 1
+  #     max_count                 = 4
+  #  }
+  #  delete_action = "remove"
 }
