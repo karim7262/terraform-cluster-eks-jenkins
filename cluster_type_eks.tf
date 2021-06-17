@@ -48,8 +48,8 @@ resource "nirmata_cluster_type_gke" "gke-cluster-type-1-30" {
     }
   }
 }
-resource "nirmata_cluster_type_eks" "eks-cluster-1-30" {
-  name                      = "alex01-tf-github-eks-cluster"
+resource "nirmata_cluster_type_eks" "eks-cluster-1-31" {
+  name                      = "alex01-t3small-tf-github-eks-cluster"
   version                   = "1.19"
   credentials               = "aws-apicluster"
   region                    = "us-west-1"
@@ -68,7 +68,7 @@ resource "nirmata_cluster_type_eks" "eks-cluster-1-30" {
 
   nodepools {
     name                = "default"
-    instance_type       = "t3.medium"
+    instance_type       = "t3.small"
     disk_size           = 60
     ssh_key_name        = "eu-central-key"
     security_groups     = ["sg-0acabab6d341XXXXX"]
