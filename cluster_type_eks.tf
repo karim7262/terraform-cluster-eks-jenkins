@@ -1,6 +1,9 @@
 variable "nirmata_token"{
   default = ""
 }
+variable "nodepool_ssh_key_name"{
+  default = ""
+}
 
 
 provider "nirmata" {
@@ -48,15 +51,15 @@ provider "nirmata" {
 #     }
 #   }
 # }
-resource "nirmata_cluster_type_eks" "eks-cluster-type-1" {
-  name                      = "tf-eks-cluster-type-1"
+resource "nirmata_cluster_type_eks" "eks-cluster-type-12" {
+  name                      = "tf-eks-cluster-type-12"
   version                   = "1.19"
-  credentials               = "aws-apicluster"
+  credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
   vpc_id                    = "vpc-04a11fc7db0fc1765"
-  subnet_id                 = ["subnet-0df29c38cf4a5XXXX", "subnet-011f4f72e6626XXXX"]
-  security_groups           = ["sg-0f76dae17a0ef3XXXX"]
-  cluster_role_arn          = "arn:aws:iam::844333597536:role/XXXX"
+  subnet_id                 = ["subnet-0df29c38cf4a5", "subnet-011f4f72e6626fc69"]
+  security_groups           = ["sg-0f76dae17a0ef3211"]
+  cluster_role_arn          = "arn:aws:iam::844333597536:role/eks-role"
   enable_private_endpoint   = true
   enable_identity_provider  = true
   auto_sync_namespaces       = false
@@ -70,9 +73,9 @@ resource "nirmata_cluster_type_eks" "eks-cluster-type-1" {
     name                = "default"
     instance_type       = "t3.medium"
     disk_size           = 60
-    ssh_key_name        = "eu-central-key"
-    security_groups     = ["sg-0acabab6d341XXXXX"]
-    iam_role            = "arn:aws:iam::844333597536:role/XXXXXX"
+    ssh_key_name        = "${var.nodepool_ssh_key_name}"
+    security_groups     = ["sg-0acabab6d34120202"]
+    iam_role            = "arn:aws:iam::844333597536:role/Node-IAM-Role"
   }
 
   addons {
@@ -87,21 +90,21 @@ resource "nirmata_cluster_type_eks" "eks-cluster-type-1" {
     name             = "vault-auth"
     path             = "nirmata/$(cluster.name)"
     addon_name       = "vault-agent-injector"
-    credentials_name = "vault_access"
+    credentials_name = "test-vault"
     delete_auth_path = true
 
     roles {
-      name                 = "sample-role"
-      service_account_name = "application-sample-sa"
-      namespace            = "application-sample-ns"
-      policies             = "application-sample-policy"
+      name                 = "datadog-agent"
+      service_account_name = "datadog-agent"
+      namespace            = "datadog-agent"
+      policies             = "nirmata"
     }
   }
 
 }
 
-resource "nirmata_cluster" "eks-cluster-1" {
-  name                 = "eks-cluster-1"
-  cluster_type         = nirmata_cluster_type_eks.eks-cluster-type-1.name
+resource "nirmata_cluster" "eks-cluster-12" {
+  name                 = "eks-cluster-12"
+  cluster_type         = nirmata_cluster_type_eks.eks-cluster-type-12.name
   node_count           = 1
 }
