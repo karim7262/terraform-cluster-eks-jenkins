@@ -51,8 +51,8 @@ provider "nirmata" {
 #     }
 #   }
 # }
-resource "nirmata_cluster_type_eks" "eks-cluster-type-12" {
-  name                      = "tf-eks-cluster-type-12"
+resource "nirmata_cluster_type_eks" "eks-cluster-1-19" {
+  name                      = "tf-eks-cluster-1-19"
   version                   = "1.19"
   credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
@@ -105,6 +105,6 @@ resource "nirmata_cluster_type_eks" "eks-cluster-type-12" {
 
 resource "nirmata_cluster" "eks-cluster-12" {
   name                 = "eks-cluster-12"
-  cluster_type         = nirmata_cluster_type_eks.eks-cluster-type-12.name
+  cluster_type         = nirmata_cluster_type_eks.eks-cluster-1-19.name
   node_count           = 1
 }
