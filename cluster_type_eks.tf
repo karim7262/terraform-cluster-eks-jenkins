@@ -54,7 +54,7 @@ provider "nirmata" {
 resource "nirmata_cluster_type_eks" "eks-cluster-1-19" {
   name                      = "tf-eks-cluster-1-19"
   version                   = "1.19"
-  credentials               = "automation-admin@nirmata.com"
+  credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
   vpc_id                    = "vpc-04a11fc7db0fc1765"
   subnet_id                 = ["subnet-0df29c38cf4a5", "subnet-011f4f72e6626fc69"]
