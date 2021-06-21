@@ -1,21 +1,18 @@
-variable "nirmata_token"{
-  default = ""
+terraform {
+  required_providers {
+    nirmata = {
+      source = "nirmata/nirmata"
+      version = "1.0.1"
+    }
+  }
 }
-variable "nodepool_ssh_key_name"{
-  default = ""
-}
-
-
 provider "nirmata" {
   #  Nirmata API Key. Best configured as the environment variable NIRMATA_TOKEN.
-     token = "${var.nirmata_token}"
-
+     token = "Pd0fcnhUrwQM2AQQB6rm8PJzp4mwFdq2lMtC9Mn9MJSw7R+ODAX2Z61mBRuWthOqgtEadh1R/RZXDes6vKU8/w=="
   #  Nirmata address. Defaults to https://nirmata.io and can be configured as the environment variable NIRMATA_URL.
      url = "https://nirmata.io"
 }
-
 # resource "nirmata_cluster_type_gke" "gke-cluster-type-1-32" {
-
 #   name                       = "alex02-tf-gke-cluster-type_alex" 
 #   version                    = "1.19.10-gke.1600"
 #   credentials                = "automation-gcp"
@@ -29,14 +26,11 @@ provider "nirmata" {
 #   allow_override_credentials = true
 #   channel                    = "Stable"
 #   auto_sync_namespaces       = true
-
 #   system_metadata = {
 #     cluster = "gke"
 #   }
-
 #   cluster_field_override = [ "enableWorkloadIdentity","subnetwork","workloadPool","network"]
 #   nodepool_field_override = [ "diskSize","serviceAccount","machineType"]
-
 #   nodepools {
 #     machine_type             = "c2-standard-16"
 #     disk_size                = 110
@@ -51,8 +45,8 @@ provider "nirmata" {
 #     }
 #   }
 # }
-resource "nirmata_cluster_type_eks" "eks-cluster-19" {
-  name                      = "tf-eks-cluster-19"
+resource "nirmata_cluster_type_eks" "eks-cluster-1-19" {
+  name                      = "tf-eks-cluster-1-19"
   version                   = "1.19"
   credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
@@ -68,7 +62,6 @@ resource "nirmata_cluster_type_eks" "eks-cluster-19" {
   # log_types = ""
   # enable_fargate = true
   # pod_execution_role_arn = ""
-
   nodepools {
     name                = "default"
     instance_type       = "t2.small"
@@ -77,22 +70,19 @@ resource "nirmata_cluster_type_eks" "eks-cluster-19" {
     security_groups     = ["sg-02fef934111f13a04"]
     iam_role            = "arn:aws:iam::844333597536:role/Node-IAM-Role"
   }
-
-  addons {
-    name            = "vault-agent-injector"
-    addon_selector  = "vault-agent-injector"
-    catalog         = "default-catalog"
-    channel         = "Stable"
-    sequence_number = 1
-  }
-
+  #addons {
+  #  name            = "vault-agent-injector"
+  #  addon_selector  = "vault-agent-injector"
+  #  catalog         = "default-catalog"
+  #  channel         = "Stable"
+  #  sequence_number = 1
+  #}
   vault_auth {
     name             = "vault-auth"
     path             = "nirmata/$(cluster.name)"
     addon_name       = "vault-agent-injector"
-    credentials_name = "test-vault"
+    credentials_name = "vault-auth"
     delete_auth_path = true
-
     roles {
       name                 = "datadog-agent"
       service_account_name = "datadog-agent"
@@ -100,22 +90,14 @@ resource "nirmata_cluster_type_eks" "eks-cluster-19" {
       policies             = "nirmata"
     }
   }
-
 }
-
 resource "nirmata_cluster" "eks-cluster-1" {
   name                 = "tf-eks-cluster"
-  cluster_type         = nirmata_cluster_type_eks.eks-cluster-19.name
-  node_count           = 1
+  cluster_type         = nirmata_cluster_type_eks.eks-cluster-1-19.name
+  nodepools {
+      node_count                = 3
+      enable_auto_scaling       = true
+      min_count = 2
+      max_count = 4
+   }
 }
-
-# resource "nirmata_cluster" "eks-cluster-1" {
-#   name                 = "tf-eks-cluster"
-#   cluster_type         = nirmata_cluster_type_eks.eks-cluster-18.name
-#   nodepools {
-#       node_count                = 3
-#       enable_auto_scaling       = true
-#       min_count = 2
-#       max_count = 4
-#   }
-# }
