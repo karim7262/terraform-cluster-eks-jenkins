@@ -51,8 +51,8 @@ provider "nirmata" {
 #     }
 #   }
 # }
-resource "nirmata_cluster_type_eks" "eks-cluster-1-19" {
-  name                      = "tf-eks-cluster-1-19"
+resource "nirmata_cluster_type_eks" "eks-cluster-1-10" {
+  name                      = "alex-eks-cluster-1-10"
   version                   = "1.19"
   credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
@@ -103,8 +103,18 @@ resource "nirmata_cluster_type_eks" "eks-cluster-1-19" {
 
 }
 
-resource "nirmata_cluster" "eks-cluster-12" {
-  name                 = "eks-cluster-12"
-  cluster_type         = nirmata_cluster_type_eks.eks-cluster-1-19.name
-  node_count           = 1
-}
+# resource "nirmata_cluster" "eks-cluster-12" {
+#   name                 = "eks-cluster-12"
+#   cluster_type         = nirmata_cluster_type_eks.eks-cluster-1-19.name
+#   node_count           = 1
+# }
+
+resource "nirmata_cluster" "eks-cluster-1" {
+  name                 = "tf-eks-cluster"
+  cluster_type         = nirmata_cluster_type_eks.eks-cluster-1-10.name
+  nodepools {
+      node_count                = 3
+      enable_auto_scaling       = true
+      min_count = 2
+      max_count = 4
+   }
