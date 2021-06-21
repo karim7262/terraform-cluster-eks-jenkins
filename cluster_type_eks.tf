@@ -112,10 +112,10 @@ resource "nirmata_cluster_type_eks" "eks-cluster-1-10" {
 resource "nirmata_cluster" "eks-cluster-1" {
   name                 = "tf-eks-cluster"
   cluster_type         = nirmata_cluster_type_eks.eks-cluster-1-10.name
-  nodepools {
+  # nodepools {
       node_count                = 3
-      enable_auto_scaling       = true
-      min_count = 2
-      max_count = 4
-  }
+      # enable_auto_scaling       = true
+      # min_count = 2
+      # max_count = 4
+  # }
 }
