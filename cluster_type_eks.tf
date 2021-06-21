@@ -118,3 +118,4 @@ resource "nirmata_cluster" "eks-cluster-1" {
       min_count = 2
       max_count = 4
    }
+}
