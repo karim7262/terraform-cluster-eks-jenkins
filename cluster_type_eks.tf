@@ -1,11 +1,10 @@
-terraform {
-  required_providers {
-    nirmata = {
-      source = "nirmata/nirmata"
-      version = "1.0.1"
-    }
-  }
+variable "nirmata_token"{
+  default = ""
 }
+variable "nodepool_ssh_key_name"{
+  default = ""
+}
+
 provider "nirmata" {
   #  Nirmata API Key. Best configured as the environment variable NIRMATA_TOKEN.
      token = "Pd0fcnhUrwQM2AQQB6rm8PJzp4mwFdq2lMtC9Mn9MJSw7R+ODAX2Z61mBRuWthOqgtEadh1R/RZXDes6vKU8/w=="
@@ -94,10 +93,15 @@ resource "nirmata_cluster_type_eks" "eks-cluster-1-19" {
 resource "nirmata_cluster" "eks-cluster-1" {
   name                 = "tf-eks-cluster"
   cluster_type         = nirmata_cluster_type_eks.eks-cluster-1-19.name
-  # nodepools {
-  node_count                = 3
-  #     enable_auto_scaling       = true
-  #     min_count = 2
-  #     max_count = 4
-  #  }
+  nodepools {
+      node_count                = 3
+      enable_auto_scaling       = true
+      min_count = 2
+      max_count = 4
+   }
 }
+
+
+
+
+
