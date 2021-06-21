@@ -105,7 +105,7 @@ resource "nirmata_cluster_type_eks" "eks-cluster-19" {
 
 resource "nirmata_cluster" "eks-cluster-1" {
   name                 = "tf-eks-cluster"
-  cluster_type         = nirmata_cluster_type_eks.eks-cluster-18.name
+  cluster_type         = nirmata_cluster_type_eks.eks-cluster-19.name
   node_count           = 1
 }
 
