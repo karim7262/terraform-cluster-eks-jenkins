@@ -51,8 +51,8 @@ provider "nirmata" {
 #     }
 #   }
 # }
-resource "nirmata_cluster_type_eks" "eks-cluster-18" {
-  name                      = "tf-eks-cluster-18"
+resource "nirmata_cluster_type_eks" "eks-cluster-19" {
+  name                      = "tf-eks-cluster-19"
   version                   = "1.19"
   credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
@@ -73,7 +73,7 @@ resource "nirmata_cluster_type_eks" "eks-cluster-18" {
     name                = "default"
     instance_type       = "t2.small"
     disk_size           = 60
-    ssh_key_name        = "${var.nodepool_ssh_key_name}"
+    ssh_key_name        = "devtest"
     security_groups     = ["sg-02fef934111f13a04"]
     iam_role            = "arn:aws:iam::844333597536:role/Node-IAM-Role"
   }
