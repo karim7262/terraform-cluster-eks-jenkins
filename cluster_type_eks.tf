@@ -11,39 +11,6 @@ provider "nirmata" {
   #  Nirmata address. Defaults to https://nirmata.io and can be configured as the environment variable NIRMATA_URL.
      url = "https://nirmata.io"
 }
-# resource "nirmata_cluster_type_gke" "gke-cluster-type-1-32" {
-#   name                       = "alex02-tf-gke-cluster-type_alex" 
-#   version                    = "1.19.10-gke.1600"
-#   credentials                = "automation-gcp"
-#   location_type              = "Zonal"
-#   project                    = "gcpXXX"
-#   zone                       = "us-west1-a"
-#   network                    = "default"
-#   subnetwork                 = "default"
-#   enable_cloud_run           = false
-#   enable_http_load_balancing = false
-#   allow_override_credentials = true
-#   channel                    = "Stable"
-#   auto_sync_namespaces       = true
-#   system_metadata = {
-#     cluster = "gke"
-#   }
-#   cluster_field_override = [ "enableWorkloadIdentity","subnetwork","workloadPool","network"]
-#   nodepool_field_override = [ "diskSize","serviceAccount","machineType"]
-#   nodepools {
-#     machine_type             = "c2-standard-16"
-#     disk_size                = 110
-#     enable_preemptible_nodes = true
-#     #service_account          = ""
-#     auto_upgrade             = true
-#     auto_repair              = true
-#     max_unavailable          = 1
-#     max_surge                = 0
-#     node_annotations = {
-#       node = "annotate"
-#     }
-#   }
-# }
 resource "nirmata_cluster_type_eks" "eks-cluster-1-19" {
   name                      = "tf-eks-cluster-1-19"
   version                   = "1.19"
@@ -69,13 +36,7 @@ resource "nirmata_cluster_type_eks" "eks-cluster-1-19" {
     security_groups     = ["sg-02fef934111f13a04"]
     iam_role            = "arn:aws:iam::844333597536:role/Node-IAM-Role"
   }
-  #addons {
-  #  name            = "vault-agent-injector"
-  #  addon_selector  = "vault-agent-injector"
-  #  catalog         = "default-catalog"
-  #  channel         = "Stable"
-  #  sequence_number = 1
-  #}
+
   vault_auth {
     name             = "vault-auth"
     path             = "nirmata/$(cluster.name)"

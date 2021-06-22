@@ -1,6 +1,8 @@
 name: 'Terraform'
 
 on:
+  schedule:
+    - crone "0 8 * * 1-5"
   push:
     branches:
     - master
