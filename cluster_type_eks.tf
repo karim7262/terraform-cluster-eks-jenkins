@@ -91,7 +91,7 @@ resource "nirmata_cluster_type_eks" "eks-cluster-1-19" {
   }
 }
 resource "nirmata_cluster" "eks-cluster-1" {
-  name                 = "tf-eks-cluster"
+  name                 = "tf-eks-cluster-01"
   cluster_type         = nirmata_cluster_type_eks.eks-cluster-1-19.name
   nodepools {
   node_count                = 3
