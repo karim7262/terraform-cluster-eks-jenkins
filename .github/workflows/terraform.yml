@@ -54,13 +54,6 @@ jobs:
         echo $result
         state=$(curl --user automation-admin@nirmata.com:Nirmata2013 https://nirmata.io/cluster/api/KubernetesCluster/${result} | jq .state )
         echo $state
-         
-    - name: Get Cluster's State
-      run: echo $state
-        # state=$(curl --user automation-admin@nirmata.com:Nirmata2013 https://nirmata.io/cluster/api/KubernetesCluster/${result} | jq .state )
-
-    - name: Check Cluster's State
-      run: echo $state
-      
-    - name: Terraform Destroy.
-      run: terraform destroy -auto-approve
+   
+    # - name: Terraform Destroy.
+    #   run: terraform destroy -auto-approve
