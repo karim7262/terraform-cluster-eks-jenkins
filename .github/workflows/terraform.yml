@@ -48,5 +48,14 @@ jobs:
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: terraform apply -auto-approve
 
+    - name: Get Cluster ID
+      run: result=$(curl --user automation-admin@nirmata.com:Nirmata2013  https://nirmata.io/cluster/api/KubernetesCluster?fields=name,id | jq -r '.[] | select(.name == "tf-eks-cluster-alex01") | .id')
+
+    - name: Get Cluster's State
+      run: state=$(curl --user automation-admin@nirmata.com:Nirmata2013 https://nirmata.io/cluster/api/KubernetesCluster/$result | jq .state )
+
+    - name: Check Cluster's State
+      run: echo $state
+      
     - name: Terraform Destroy.
       run: terraform destroy -auto-approve
