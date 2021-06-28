@@ -57,5 +57,5 @@ jobs:
     - name: Check Cluster's State
       run: echo $state
       
-    - name: Terraform Destroy
+    - name: Terraform Destroy.
       run: terraform destroy -auto-approve
