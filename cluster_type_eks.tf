@@ -11,8 +11,8 @@ provider "nirmata" {
   #  Nirmata address. Defaults to https://nirmata.io and can be configured as the environment variable NIRMATA_URL.
      url = "https://nirmata.io"
 }
-resource "nirmata_cluster_type_eks" "eks-cluster-10-alex10" {
-  name                      = "tf-eks-cluster-1-alex10"
+resource "nirmata_cluster_type_eks" "eks-cluster-11-alex11" {
+  name                      = "tf-eks-cluster-11-alex11"
   version                   = "1.19"
   credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
@@ -51,9 +51,9 @@ resource "nirmata_cluster_type_eks" "eks-cluster-10-alex10" {
     }
   }
 }
-resource "nirmata_cluster" "eks-cluster-alex01" {
-  name                 = "tf-eks-cluster-alex01"
-  cluster_type         = nirmata_cluster_type_eks.eks-cluster-10-alex10.name 
+resource "nirmata_cluster" "eks-cluster-alex11" {
+  name                 = "tf-eks-cluster-alex11"
+  cluster_type         = nirmata_cluster_type_eks.eks-cluster-11-alex11.name 
   nodepools {
   node_count                = 3
       enable_auto_scaling       = true
