@@ -50,9 +50,9 @@ jobs:
 
     - name: Get Cluster ID
       run: |
-        result=$(curl --user automation-admin@nirmata.com:Nirmata2013  https://nirmata.io/cluster/api/KubernetesCluster?fields=name,id | jq -r '.[] | select(.name == "tf-eks-cluster-alex01") | .id')
+        result=$(curl --user automation-admin@nirmata.com:${{ secrets.NIRMATA_PASS }}  https://nirmata.io/cluster/api/KubernetesCluster?fields=name,id | jq -r '.[] | select(.name == "${{ var.cluster_name }}") | .id')
         echo $result
-        state=$(curl --user automation-admin@nirmata.com:Nirmata2013 https://nirmata.io/cluster/api/KubernetesCluster/${result} | jq .state )
+        state=$(curl --user automation-admin@nirmata.com:${{ secrets.NIRMATA_PASS }} https://nirmata.io/cluster/api/KubernetesCluster/${result} | jq .state )
         echo $state
    
     - name: Terraform Destroy.
