@@ -55,5 +55,5 @@ jobs:
         state=$(curl --user automation-admin@nirmata.com:Nirmata2013 https://nirmata.io/cluster/api/KubernetesCluster/${result} | jq .state )
         echo $state
    
-    - name: Terraform Destroy.
-      run: terraform destroy -auto-approve
+    # - name: Terraform Destroy.
+    #   run: terraform destroy -auto-approve
