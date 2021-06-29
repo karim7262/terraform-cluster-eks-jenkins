@@ -1,12 +1,12 @@
 variable "nirmata_token"{
   default = ""
-}
+} 
 variable "nodepool_ssh_key_name"{
   default = ""
 }
 
 provider "nirmata" {
-  #  Nirmata API Key. Best configured as the environment variable NIRMATA_TOKEN.
+  #  Nirmata API Key. Best configured as the environment variable NIRMATA_TOKEN
      token = "${var.nirmata_token}"
   #  Nirmata address. Defaults to https://nirmata.io and can be configured as the environment variable NIRMATA_URL.
      url = "https://nirmata.io"
