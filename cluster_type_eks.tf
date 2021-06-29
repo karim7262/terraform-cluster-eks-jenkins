@@ -3,11 +3,11 @@ variable "nirmata_token"{
 } 
 
 locals {
-  cluster_name = "cluster_eks_test_automation"
+  cluster_name = "cluster-eks-test-automation"
 }
 
 locals {
-  cluster_type_name = "cluster_type_eks_test_automation"
+  cluster_type_name = "cluster-type-eks-test-automation"
 }
 
 
