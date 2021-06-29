@@ -19,7 +19,7 @@ provider "nirmata" {
      url = "https://nirmata.io"
 }
 resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
-  name                      = "${locals.cluster_type_name}"
+  name                      = "${local.cluster_type_name}"
   version                   = "1.19"
   credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
