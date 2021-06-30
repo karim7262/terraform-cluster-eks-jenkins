@@ -4,6 +4,8 @@ variable "nirmata_token"{
 
 locals {
   name-sufix = "automation06" // !!! change also in terraform.yaml
+}
+
 
 provider "nirmata" {
   #  Nirmata API Key. Best configured as the environment variable NIRMATA_TOKEN
