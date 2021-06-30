@@ -2,15 +2,9 @@ variable "nirmata_token"{
   default = ""
 } 
 
-# locals {
-#   cluster_name = "cluster-eks-test-automation1"
-# }
-
-# locals {
-#   cluster_type_name = "cluster-type-eks-test-automation1"
-# }
-
-
+locals {
+  name-sufix = "automation06"
+}
 
 provider "nirmata" {
   #  Nirmata API Key. Best configured as the environment variable NIRMATA_TOKEN
@@ -18,8 +12,8 @@ provider "nirmata" {
   #  Nirmata address. Defaults to https://nirmata.io and can be configured as the environment variable NIRMATA_URL.
      url = "https://nirmata.io"
 }
-resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation05" {
-  name                      = "cluster-type-eks-test-automation05"
+resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
+  name                      = "cluster-type-eks-test-${local.name-sufix}"
   version                   = "1.19"
   credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
@@ -58,9 +52,9 @@ resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation05" {
     }
   }
 }
-resource "nirmata_cluster" "eks-cluster-alex05" {   
-  name                 = "cluster-eks-test-automation05"
-  cluster_type         = nirmata_cluster_type_eks.eks-cluster-tf-test-automation05.name 
+resource "nirmata_cluster" "eks-cluster-test-automation" {   
+  name                 = "cluster-eks-test-${local.name-sufix}"
+  cluster_type         = nirmata_cluster_type_eks.eks-cluster-tf-test-automation.name 
   nodepools {
   node_count                = 3
       enable_auto_scaling       = true
