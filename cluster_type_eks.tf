@@ -19,7 +19,7 @@ provider "nirmata" {
      url = "https://nirmata.io"
 }
 resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
-  name                      = "cluster-type-eks-test-automation2"
+  name                      = "cluster-type-eks-test-automation"
   version                   = "1.19"
   credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
@@ -60,7 +60,7 @@ resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
 }
 resource "nirmata_cluster" "eks-cluster-alex11" {
   name                 = "cluster-eks-test-automation2"
-  cluster_type         = nirmata_cluster_type_eks.eks-cluster-tf-test-automation.name //"nirmata_cluster_type_eks" "eks-cluster-tf-test-automation"
+  cluster_type         = nirmata_cluster_type_eks.eks-cluster-tf-test-automation.name 
   nodepools {
   node_count                = 3
       enable_auto_scaling       = true
