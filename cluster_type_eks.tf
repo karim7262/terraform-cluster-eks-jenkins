@@ -18,8 +18,8 @@ provider "nirmata" {
   #  Nirmata address. Defaults to https://nirmata.io and can be configured as the environment variable NIRMATA_URL.
      url = "https://nirmata.io"
 }
-resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
-  name                      = "cluster-type-eks-test-automation"
+resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation04" {
+  name                      = "cluster-type-eks-test-automation04"
   version                   = "1.19"
   credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
@@ -58,8 +58,8 @@ resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
     }
   }
 }
-resource "nirmata_cluster" "eks-cluster-alex11" {
-  name                 = "cluster-eks-test-automation3"
+resource "nirmata_cluster" "eks-cluster-alex04" {
+  name                 = "cluster-eks-test-automation04"
   cluster_type         = nirmata_cluster_type_eks.eks-cluster-tf-test-automation.name 
   nodepools {
   node_count                = 3
