@@ -58,9 +58,9 @@ resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation04" {
     }
   }
 }
-resource "nirmata_cluster" "eks-cluster-alex04" {
+resource "nirmata_cluster" "eks-cluster-alex04" {   
   name                 = "cluster-eks-test-automation04"
-  cluster_type         = nirmata_cluster_type_eks.eks-cluster-tf-test-automation.name 
+  cluster_type         = nirmata_cluster_type_eks.eks-cluster-tf-test-automation04.name 
   nodepools {
   node_count                = 3
       enable_auto_scaling       = true
