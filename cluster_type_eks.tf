@@ -59,7 +59,7 @@ resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
   }
 }
 resource "nirmata_cluster" "eks-cluster-alex11" {
-  name                 = "cluster-eks-test-automation2"
+  name                 = "cluster-eks-test-automation3"
   cluster_type         = nirmata_cluster_type_eks.eks-cluster-tf-test-automation.name 
   nodepools {
   node_count                = 3
