@@ -48,7 +48,7 @@ jobs:
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: terraform apply -auto-approve
 
-    - name: Get Cluster ID
+    - name: Check Cluster State
       run: |
         result=$(curl --user automation-admin@nirmata.com:${{ secrets.NIRMATA_PASS }}  https://nirmata.io/cluster/api/KubernetesCluster?fields=name,id | jq -r '.[] | select(.name == "cluster_eks_test_automation") | .id')
         echo $result
