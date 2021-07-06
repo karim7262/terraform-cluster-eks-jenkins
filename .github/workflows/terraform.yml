@@ -54,5 +54,16 @@ jobs:
     # - name: Terraform Destroy.
     #   run: terraform destroy -auto-approve
 
-    - name: Check Go Lang
-      run: go -version
+    - name: Checkout tools repo
+      uses: actions/checkout@v2
+      with:
+        repository: nirmata/terraform-provider-nirmata
+        path: terraform-provider-nirmata
+
+    - name: Build Nirmata Provider
+      run: go build
+
+    - name: some code
+      run: |
+        pwd
+        ls -alt 
