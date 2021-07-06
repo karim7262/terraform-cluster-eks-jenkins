@@ -5,7 +5,7 @@
         nirmata = {
             source  = "registry.terraform.io/nirmata/nirmata"
             # source  = "nirmata/nirmata"
-            version = "1.0.1"
+            version = "1.0.0"
         }
       }
       backend "remote" {
