@@ -14,7 +14,7 @@
 
         # The name of the Terraform Cloud workspace to store Terraform state files in.
         workspaces {
-          name = "new_workspace3"
+          name = "new_workspace4"
         }
       }
     }
