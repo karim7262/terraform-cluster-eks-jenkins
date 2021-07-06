@@ -69,4 +69,5 @@ jobs:
         ls -alt 
         cd terraform-provider-nirmata
         pwd
-        ls -alt 
+        ls -alt
+        go build 
