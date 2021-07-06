@@ -71,3 +71,4 @@ jobs:
         pwd
         ls -alt
         go build 
+        ls -alt
