@@ -72,6 +72,6 @@ jobs:
         ls -alt
         go build 
         ls -alt
-        cd terraform-provider-nirmata
+        mv terraform-provider-nirmata terraform-provider-nirmata_v1.0.0 
         pwd
         ls -alt 
