@@ -36,9 +36,9 @@ jobs:
           ls -alt
           go build 
           ls -alt
-          mkdir nirmata
-          mv terraform-provider-nirmata nirmata/terraform-provider-nirmata_v1.0.0 
-          cd nirmata/
+          mkdir nirmata1
+          mv terraform-provider-nirmata nirmata1/terraform-provider-nirmata_v1.0.0 
+          cd nirmata1/
           pwd
           ls -alt
 
