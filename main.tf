@@ -3,9 +3,9 @@
       required_version = ">= 0.14"
       required_providers {
         nirmata = {
-            source  = "/home/runner/work/nirmata_terraform_cluster_eks/nirmata_terraform_cluster_eks/terraform-provider-nirmata"
+            source  = "registry.terraform.io/nirmata/nirmata"
             # source  = "nirmata/nirmata"
-            version = "1.0.0"
+            version = "1.0.1"
         }
       }
       backend "remote" {
