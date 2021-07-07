@@ -44,10 +44,10 @@ jobs:
 
       - name: list all the files in mirrored folder
         run: |
-        pwd
-        cd terraform-provider-nirmata
-        pwd
-        ls -alt 
+          pwd
+          cd terraform-provider-nirmata
+          pwd
+          ls -alt 
 
           # mv terraform-provider-nirmata nirmata/terraform-provider-nirmata_v1.0.0 
           # cd nirmata1/
