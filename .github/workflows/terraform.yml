@@ -54,7 +54,6 @@ jobs:
           cat 1.0.1.json
           cat index.json
           unzip terraform-provider-nirmata_1.0.1_linux_amd64.zip
-          cd terraform-provider-nirmata_1.0.1_linux_amd64
           ls -l
 
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
