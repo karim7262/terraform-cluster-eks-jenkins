@@ -29,13 +29,17 @@ jobs:
 
       - name: Build nirmata provider
         run: |
-          # move to folder where nrimata provider was pulled 
+          # move to folder where nirmata provider was pulled 
           cd terraform-provider-nirmata
 
           # make a new nirmata terraform provider build
           go build 
           pwd
           ls -alt
+      - name: Store nirmata provider buid
+        run: |
+          mkdir /provider
+          mv /home/runner/work/nirmata_terraform_cluster_eks/nirmata_terraform_cluster_eks/terraform-provider-nirmata/terraform-provider-nirmata.exe /provider/terraform-provider-nirmata_v1.0.1.exe
 
       # Checkout the repository to the GitHub Actions runner.
       - name: Checkout
