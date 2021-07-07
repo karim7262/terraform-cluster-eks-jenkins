@@ -50,17 +50,22 @@ jobs:
           cd registry.terraform.io/nirmata/nirmata
           ls -l
 
-      - name: list all the files in mirrored folder
+      # Set the CLI config to a temporary file
+      - name: CLI config
         run: |
-          pwd
-          cd ~/terraform-file-mirror
-          pwd
-          ls -l
+          export TF_CLI_CONFIG_FILE="$HOME/.teraformrctemp"
+          cat <<EOF > TF_CLI_CONFIG_FILE
+          provider_installation {
+            filesystem_mirror {
+              path = "$HOME/terraform-file-mirror/"
+              include = ["nirmata/nirmata"] 
+            }
+            direct {
+              exclude = ["nirmata/nirmata"]
+            }
+          }
 
-          # mv terraform-provider-nirmata nirmata/terraform-provider-nirmata_v1.0.0 
-          # cd nirmata1/
-          # pwd
-          # ls -alt
+         
 
     # # Checkout the repository to the GitHub Actions runner.
     #   - name: Checkout
