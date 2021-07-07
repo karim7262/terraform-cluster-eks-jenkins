@@ -30,6 +30,10 @@ jobs:
       - name: some code
         run: |
           pwd
+          mkdir ~/terraform-file-mirror
+          terraform providers mirror ~/terraform-file-mirror
+          tree ~/terraform-file-mirror
+
           ls -alt 
           cd terraform-provider-nirmata
           pwd
