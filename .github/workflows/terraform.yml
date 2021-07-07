@@ -39,8 +39,8 @@ jobs:
       - name: Store nirmata provider buid
         run: |
           mkdir /tmp/provider
-          mv /home/runner/work/nirmata_terraform_cluster_eks/nirmata_terraform_cluster_eks/terraform-provider-nirmata/terraform-provider-nirmata.exe /provider/terraform-provider-nirmata_v1.0.1.exe
-
+          mv /home/runner/work/nirmata_terraform_cluster_eks/nirmata_terraform_cluster_eks/terraform-provider-nirmata/terraform-provider-nirmata /provider/terraform-provider-nirmata_v1.0.1
+              
       # Checkout the repository to the GitHub Actions runner.
       - name: Checkout
         uses: actions/checkout@v2
