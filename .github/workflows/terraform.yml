@@ -27,7 +27,7 @@ jobs:
           repository: nirmata/terraform-provider-nirmata
           path: terraform-provider-nirmata
 
-      - name: some code
+      - name: Build nirmata provider
         run: |
           # move to folder where nrimata provider was pulled 
           cd terraform-provider-nirmata
@@ -36,7 +36,12 @@ jobs:
           go build 
           ls -alt
 
-      - name: mirror existing terraform provider in host machine
+      # Checkout the repository to the GitHub Actions runner.
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Mirror existing terraform provider in host machine
+      - name: Mirror 
         run: |
           mkdir ~/terraform-file-mirror
           terraform providers mirror ~/terraform-file-mirror
