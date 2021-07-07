@@ -51,6 +51,8 @@ jobs:
           ls -l
           cd nirmata/nirmata
           ls -l
+          cat 1.0.1.json
+          cat index.json
 
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
       - name: Setup Terraform
@@ -61,19 +63,18 @@ jobs:
       # Set the CLI config to a temporary file
       - name: CLI config
         run: |
-          pwd
-          # export TF_CLI_CONFIG_FILE="$HOME/.teraformrctemp"
-          # cat <<EOF > $TF_CLI_CONFIG_FILE
-          # provider_installation {
-          #   filesystem_mirror {
-          #     path = "$HOME/terraform-file-mirror/"
-          #     include = ["nirmata/nirmata"] 
-          #   }
-          #   direct {
-          #     exclude = ["nirmata/nirmata"]
-          #   }
-          # }
-          # export TF_LOG=DEBUG
+          export TF_CLI_CONFIG_FILE="$HOME/.teraformrc"
+          cat > $TF_CLI_CONFIG_FILE
+          provider_installation {
+            filesystem_mirror {
+              path = "$HOME/terraform-file-mirror/"
+              include = ["nirmata/nirmata"] 
+            }
+            direct {
+              exclude = ["nirmata/nirmata"]
+            }
+          }
+          export TF_LOG=DEBUG
       
       # # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
       # - name: Terraform Init
