@@ -34,6 +34,7 @@ jobs:
 
           # make a new nirmata terraform provider build
           go build 
+          pwd
           ls -alt
 
       # Checkout the repository to the GitHub Actions runner.
