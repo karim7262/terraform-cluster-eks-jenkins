@@ -32,17 +32,19 @@ jobs:
           # move to folder where nrimata provider was pulled 
           cd terraform-provider-nirmata
 
-          # make a new nirmata terraform provider buils
+          # make a new nirmata terraform provider build
           go build 
           ls -alt
 
-          # mirror existing terraform provider in host machine
+      - name: mirror existing terraform provider in host machine
+        run: |
           mkdir ~/terraform-file-mirror
           terraform providers mirror ~/terraform-file-mirror
           cd ~/terraform-file-mirror
-          ls -alt 
 
-          
+      - name: list all the files in mirrored folder
+        run: ls -alt 
+
           # mv terraform-provider-nirmata nirmata/terraform-provider-nirmata_v1.0.0 
           # cd nirmata1/
           # pwd
