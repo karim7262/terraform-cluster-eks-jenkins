@@ -47,6 +47,8 @@ jobs:
           terraform providers mirror ~/terraform-file-mirror
           cd ~/terraform-file-mirror
           ls -l
+          cd registry.terraform.io/nirmata/nirmata
+          ls -l
 
       - name: list all the files in mirrored folder
         run: |
