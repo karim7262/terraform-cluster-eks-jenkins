@@ -38,7 +38,7 @@ jobs:
           ls -alt
       - name: Store nirmata provider buid
         run: |
-          mkdir /provider
+          mkdir /tmp/provider
           mv /home/runner/work/nirmata_terraform_cluster_eks/nirmata_terraform_cluster_eks/terraform-provider-nirmata/terraform-provider-nirmata.exe /provider/terraform-provider-nirmata_v1.0.1.exe
 
       # Checkout the repository to the GitHub Actions runner.
@@ -69,10 +69,9 @@ jobs:
       # Replace nirmata provider
       - name: Replace provider
         run: |
-          cd /home/runner/work/nirmata_terraform_cluster_eks/nirmata_terraform_cluster_eks
+          cd /tmp/provider
           ls -l
-    # /home/runner/work/nirmata_terraform_cluster_eks/nirmata_terraform_cluster_eks/terraform-provider-nirmata
-       # mv terraform-provider-nirmata.exe /home/runner/terraform-file-mirror/registry.terraform.io/nirmata/nirmata/terraform-provider-nirmata_v1.0.1.exe
+          mv terraform-provider-nirmata_v1.0.1.exe /home/runner/terraform-file-mirror/registry.terraform.io/nirmata/nirmata/terraform-provider-nirmata_v1.0.1.exe
 
       # Set the CLI config to a temporary file.
       - name: CLI config
