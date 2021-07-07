@@ -8,8 +8,8 @@
       #       version = "1.0.0"
       #   }
       # }
-      provider_installation{
-        filesystem_mirror{
+      provider_installation {
+        filesystem_mirror {
           path = "/home/runner/work/nirmata_terraform_cluster_eks/nirmata_terraform_cluster_eks/terraform-provider-nirmata"
         }
       }
