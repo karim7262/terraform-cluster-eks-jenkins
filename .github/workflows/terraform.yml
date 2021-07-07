@@ -41,7 +41,7 @@ jobs:
           mkdir ~/terraform-file-mirror
           terraform providers mirror ~/terraform-file-mirror
           cd ~/terraform-file-mirror
-          pwd
+          ls -l
 
       - name: list all the files in mirrored folder
         run: |
