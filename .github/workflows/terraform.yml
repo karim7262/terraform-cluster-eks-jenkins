@@ -34,11 +34,7 @@ jobs:
           terraform providers mirror ~/terraform-file-mirror
           cd ~/terraform-file-mirror
           pwd
-
           ls -alt 
-          cd terraform-provider-nirmata
-          pwd
-          ls -alt
           go build 
           ls -alt
           mkdir nirmata1
