@@ -60,7 +60,7 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      # Set the CLI config to a temporary file
+      # Set the CLI config to a temporary file.
       - name: CLI config
         run: |
           export TF_CLI_CONFIG_FILE="$HOME/.terraformrc"
