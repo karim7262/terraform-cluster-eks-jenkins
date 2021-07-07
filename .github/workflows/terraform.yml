@@ -43,7 +43,11 @@ jobs:
           cd ~/terraform-file-mirror
 
       - name: list all the files in mirrored folder
-        run: ls -alt 
+        run: |
+        pwd
+        cd terraform-provider-nirmata
+        pwd
+        ls -alt 
 
           # mv terraform-provider-nirmata nirmata/terraform-provider-nirmata_v1.0.0 
           # cd nirmata1/
