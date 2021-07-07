@@ -47,7 +47,9 @@ jobs:
           terraform providers mirror ~/terraform-file-mirror
           cd ~/terraform-file-mirror
           ls -l
-          cd registry.terraform.io/nirmata/nirmata
+          cd registry.terraform.io
+          ls -l
+          cd nirmata/nirmata
           ls -l
 
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
