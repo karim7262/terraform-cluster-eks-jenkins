@@ -63,8 +63,8 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       # Replace nirmata provider
-      # - name: Replace provider
-      #   run: mv /home/runner/work/nirmata_terraform_cluster_eks/nirmata_terraform_cluster_eks/terraform-provider-nirmata/terraform-provider-nirmata 
+      - name: Replace provider
+        run: mv /home/runner/work/nirmata_terraform_cluster_eks/nirmata_terraform_cluster_eks/terraform-provider-nirmata/terraform-provider-nirmata /home/runner/terraform-file-mirror/registry.terraform.io/nirmata/nirmata/terraform-provider-nirmata_v1.0.1
 
       # Set the CLI config to a temporary file.
       - name: CLI config
