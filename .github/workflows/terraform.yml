@@ -36,7 +36,7 @@ jobs:
           go build 
           pwd
           ls -alt
-      - name: Store nirmata provider buid
+      - name: Store nirmata provider build
         run: |
           mkdir /tmp/provider
           mv /home/runner/work/nirmata_terraform_cluster_eks/nirmata_terraform_cluster_eks/terraform-provider-nirmata/terraform-provider-nirmata /tmp/provider/terraform-provider-nirmata_v1.0.1
@@ -71,7 +71,7 @@ jobs:
         run: |
           cd /tmp/provider
           ls -l
-          mv terraform-provider-nirmata_v1.0.1.exe /home/runner/terraform-file-mirror/registry.terraform.io/nirmata/nirmata/terraform-provider-nirmata_v1.0.1.exe
+          mv terraform-provider-nirmata_v1.0.1 /home/runner/terraform-file-mirror/registry.terraform.io/nirmata/nirmata/terraform-provider-nirmata_v1.0.1
 
       # Set the CLI config to a temporary file.
       - name: CLI config
