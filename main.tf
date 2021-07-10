@@ -6,11 +6,6 @@
             source  = "nirmata/nirmata"
             version = "1.0.1"
         }
-      #   provider_installation {
-      #   filesystem_mirror {
-      #     path = "/home/runner/work/nirmata_terraform_cluster_eks/nirmata_terraform_cluster_eks/terraform-provider-nirmata"
-      #   }
-      # }
       }
       
       backend "remote" {
@@ -19,7 +14,7 @@
 
         # The name of the Terraform Cloud workspace to store Terraform state files in.
         workspaces {
-          name = "new_workspace6"
+          name = "automation_terraform"
         }
       }
     }
