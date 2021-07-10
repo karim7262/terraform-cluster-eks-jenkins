@@ -40,10 +40,10 @@ resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
   }
 
   vault_auth {
-    name             = "vault-auth01"
+    name             = "vault-auth"
     path             = "nirmata/$(cluster.name)"
     addon_name       = "vault-agent-injector"
-    credentials_name = "vault-auth01"
+    credentials_name = "vault-auth"
     delete_auth_path = true
     roles {
       name                 = "datadog-agent"
