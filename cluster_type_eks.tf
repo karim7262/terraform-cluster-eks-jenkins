@@ -39,11 +39,13 @@ resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
     iam_role            = "arn:aws:iam::844333597536:role/Node-IAM-Role"
   }
 
+
+
   vault_auth {
     name             = "vault-auth"
     path             = "nirmata/$(cluster.name)"
     addon_name       = "vault-agent-injector"
-    credentials_name = "vault-auth"
+    credentials_name = "vault-lab"
     delete_auth_path = true
     roles {
       name                 = "datadog-agent"
