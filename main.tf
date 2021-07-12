@@ -1,6 +1,6 @@
 # The configuration for the `remote` backend.
     terraform {
-      # required_version = ">= 0.14"
+      required_version = ">= 0.14"
       required_providers {
         nirmata = {
             # source  = "registry.terraform.io/nirmata/nirmata"
