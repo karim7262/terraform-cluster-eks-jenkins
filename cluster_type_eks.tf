@@ -15,7 +15,7 @@ provider "nirmata" {
 }
 resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
   name                      = "cluster-type-eks-test-${local.name-sufix}"
-  version                   = "1.19"
+  version                   = "1.18"
   credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
   vpc_id                    = "vpc-0a02d3feafdd131e9"
