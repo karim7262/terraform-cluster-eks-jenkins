@@ -11,7 +11,7 @@ provider "nirmata" {
   #  Nirmata API Key. Best configured as the environment variable NIRMATA_TOKEN
      token = "${var.nirmata_token}"
   #  Nirmata address. Defaults to https://nirmata.io and can be configured as the environment variable NIRMATA_URL.
-     url = "https://nirmata.io"
+     url = "https://staging.nirmata.co"
 }
 resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
   name                      = "cluster-type-eks-test-${local.name-sufix}"
