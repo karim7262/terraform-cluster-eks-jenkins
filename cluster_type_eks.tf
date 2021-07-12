@@ -42,7 +42,7 @@ resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
 
 
   vault_auth {
-    name             = "vault-auth"
+    name             = "vault-auth01"
     path             = "nirmata/$(cluster.name)"
     addon_name       = "vault-agent-injector"
     credentials_name = "vault-lab"
