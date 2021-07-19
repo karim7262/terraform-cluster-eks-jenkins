@@ -3,7 +3,7 @@ variable "nirmata_token"{
 } 
 
 locals {
-  name-sufix = "automation55" // !!! change also in terraform.yaml.
+  name-sufix = "automation01" // !!! change also in terraform.yaml
 }
 
 
@@ -16,7 +16,7 @@ provider "nirmata" {
 resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
   name                      = "cluster-type-eks-test-${local.name-sufix}"
   version                   = "1.18"
-  credentials               = "aws-apicluster"//"nirmata-aws-dev"
+  credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
   vpc_id                    = "vpc-0a02d3feafdd131e9"
   subnet_id                 = ["subnet-0369f4bd32e5db9d5", "subnet-0bea7061f60ae8a8d", "subnet-08f6b376fb8c0d61d"]
