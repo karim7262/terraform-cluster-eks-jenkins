@@ -3,7 +3,7 @@ variable "nirmata_token"{
 } 
 
 locals {
-  name-sufix = "automation02" // !!! change also in terraform.yaml
+  name-sufix = "automation03" // !!! change also in terraform.yaml
 }
 
 
