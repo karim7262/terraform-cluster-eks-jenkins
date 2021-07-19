@@ -51,7 +51,7 @@ jobs:
 
     - name: Check Cluster State
       run: |
-        result=$(curl --user automation-admin@nirmata.com:${{ secrets.NIRMATA_PASS }}  https://nirmata.io/cluster/api/KubernetesCluster?fields=name,id | jq -r '.[] | select(.name == "cluster-eks-test-automation05") | .id')
+        result=$(curl --user automation-admin@nirmata.com:${{ secrets.NIRMATA_PASS }}  https://nirmata.io/cluster/api/KubernetesCluster?fields=name,id | jq -r '.[] | select(.name == "cluster-eks-test-automation55") | .id')
         echo $result
         state=$(curl --user automation-admin@nirmata.com:${{ secrets.NIRMATA_PASS }} https://nirmata.io/cluster/api/KubernetesCluster/${result} | jq .state )
         echo $state

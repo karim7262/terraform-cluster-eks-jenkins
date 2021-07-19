@@ -3,7 +3,7 @@ variable "nirmata_token"{
 } 
 
 locals {
-  name-sufix = "automation05" // !!! change also in terraform.yaml.
+  name-sufix = "automation55" // !!! change also in terraform.yaml.
 }
 
 
@@ -87,5 +87,5 @@ resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
   #     policies             = "nirmata"
       
   #   }
-  }
+  # }
 }
