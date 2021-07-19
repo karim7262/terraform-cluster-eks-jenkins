@@ -74,18 +74,18 @@ resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
     security_groups     = ["sg-0acabab6d34120202"]
     iam_role            = "arn:aws:iam::844333597536:role/Node-IAM-Role"
   }
-   vault_auth {
-    name             = "vault-auth"
-    path             = "nirmata/$(cluster.name)"
-    addon_name       = "vault-agent-injector"
-    credentials_name = "test-vault"
-    delete_auth_path     = "true"
-    roles {
-      name                 = "datadog-agent"
-      service_account_name = "datadog-agent"
-      namespace            = "datadog-agent"
-      policies             = "nirmata"
+  #  vault_auth {
+  #   name             = "vault-auth"
+  #   path             = "nirmata/$(cluster.name)"
+  #   addon_name       = "vault-agent-injector"
+  #   credentials_name = "test-vault"
+  #   delete_auth_path     = "true"
+  #   roles {
+  #     name                 = "datadog-agent"
+  #     service_account_name = "datadog-agent"
+  #     namespace            = "datadog-agent"
+  #     policies             = "nirmata"
       
-    }
+  #   }
   }
 }
