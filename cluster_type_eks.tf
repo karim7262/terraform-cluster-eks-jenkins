@@ -18,10 +18,10 @@ resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
   version                   = "1.18"
   credentials               = "aws-apicluster"//"nirmata-aws-dev"
   region                    = "us-west-1"
-  vpc_id                    = "vpc-0a02d3feafdd131e9"
+  vpc_id                    = "vpc-05f45863"
   subnet_id                 = ["subnet-0369f4bd32e5db9d5", "subnet-0bea7061f60ae8a8d", "subnet-08f6b376fb8c0d61d"]
-  security_groups           = ["sg-09d9fc7c49bed957f"]
-  cluster_role_arn          = "arn:aws:iam::844333597536:role/eks-role"
+  security_groups           = ["sg-00e7a90524265bfb0"]
+  cluster_role_arn          = "arn:aws:iam::094919933512:role/eks-role"
   enable_private_endpoint   = true
   enable_identity_provider  = true
   auto_sync_namespaces       = false
@@ -34,8 +34,8 @@ resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
     name                = "default"
     instance_type       = "t2.small"
     disk_size           = 60
-    ssh_key_name        = "devtest"
-    security_groups     = ["sg-02fef934111f13a04"]
+    ssh_key_name        = "nirmata-west-1-062014"
+    security_groups     = ["sg-00e7a90524265bfb0"]
     iam_role            = "arn:aws:iam::844333597536:role/Node-IAM-Role"
   }
 
