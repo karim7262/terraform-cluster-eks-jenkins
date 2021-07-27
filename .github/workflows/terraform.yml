@@ -1,8 +1,8 @@
 name: 'Terraform'
 
 on:
-  schedule:
-    - cron: "0 8 * * 1-5"
+  # schedule:
+  #   - cron: "0 8 * * 1-5"
   push:
     branches:
     - master

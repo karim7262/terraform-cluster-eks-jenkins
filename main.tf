@@ -9,7 +9,7 @@
         }
       }
       backend "remote" {
-        # The name of your Terraform Cloud organization.
+        # The name of your Terraform Cloud organization
         organization = "automation-admin"
 
         # The name of the Terraform Cloud workspace to store Terraform state files in
