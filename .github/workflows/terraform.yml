@@ -1,12 +1,9 @@
 name: 'Terraform'
 
 on:
-  # schedule:
-  #   - cron: "0 8 * * 1-5"
-  push:
-    branches:
-    - master
   pull_request:
+    branches:
+      - 'main'
 
 jobs:
   terraform:
@@ -20,9 +17,13 @@ jobs:
         shell: bash
 
     steps:
-    # Checkout the repository to the GitHub Actions runner.
-    - name: Checkout
-      uses: actions/checkout@v2
+    # # Checkout the repository to the GitHub Actions runner.
+    # - name: Checkout
+    #   uses: actions/checkout@v2
+    - name: Checkout nirmata provider from present working branch
+      uses: actions/checkout@master
+      with:
+        ref: ${{ github.ref }}
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token.
     - name: Setup Terraform
@@ -49,12 +50,12 @@ jobs:
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: terraform apply -auto-approve
 
-    - name: Check Cluster State
-      run: |
-        result=$(curl --user automation-admin@nirmata.com:${{ secrets.NIRMATA_PASS }}  https://nirmata.io/cluster/api/KubernetesCluster?fields=name,id | jq -r '.[] | select(.name == "cluster-eks-test-automation12") | .id')
-        echo $result
-        state=$(curl --user automation-admin@nirmata.com:${{ secrets.NIRMATA_PASS }} https://nirmata.io/cluster/api/KubernetesCluster/${result} | jq .state )
-        echo $state
+    # - name: Check Cluster State
+    #   run: |
+    #     result=$(curl --user automation-admin@nirmata.com:${{ secrets.NIRMATA_PASS }}  https://nirmata.io/cluster/api/KubernetesCluster?fields=name,id | jq -r '.[] | select(.name == "cluster-eks-test-automation12") | .id')
+    #     echo $result
+    #     state=$(curl --user automation-admin@nirmata.com:${{ secrets.NIRMATA_PASS }} https://nirmata.io/cluster/api/KubernetesCluster/${result} | jq .state )
+    #     echo $state
    
     - name: Terraform Destroy.
       run: terraform destroy -auto-approve
