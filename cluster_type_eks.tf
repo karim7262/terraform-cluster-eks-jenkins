@@ -14,7 +14,7 @@ provider "nirmata" {
      url = "https://nirmata.io"
 }
 resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
-  name                      = "cluster-type-eks-test-fromsuperbranch-${local.name-sufix}"
+  name                      = "cluster-type-eks-test-fromsuperpuperbranch-${local.name-sufix}"
   version                   = "1.18"
   credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
@@ -41,7 +41,7 @@ resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
 
 }
 resource "nirmata_cluster" "eks-cluster-test-automation" {   
-  name                 = "cluster-eks-test-fromsuperbranch-${local.name-sufix}"
+  name                 = "cluster-eks-test-fromsuperpuperbranch-${local.name-sufix}"
   cluster_type         = nirmata_cluster_type_eks.eks-cluster-tf-test-automation.name 
   nodepools {
   node_count                = 3
