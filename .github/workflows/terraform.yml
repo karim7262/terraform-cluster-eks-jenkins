@@ -20,13 +20,13 @@ jobs:
         shell: bash
 
     steps:
-    # # Checkout the repository to the GitHub Actions runner.
-    # - name: Checkout
-    #   uses: actions/checkout@v2
-    - name: Checkout nirmata provider from present working branch
-      uses: actions/checkout@master
-      with:
-        ref: ${{ github.ref }}
+    # Checkout the repository to the GitHub Actions runner.
+    - name: Checkout
+      uses: actions/checkout@v2
+    # - name: Checkout nirmata provider from present working branch
+    #   uses: actions/checkout@master
+    #   with:
+    #     ref: ${{ github.ref }}
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token.
     - name: Setup Terraform
