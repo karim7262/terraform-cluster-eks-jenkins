@@ -16,5 +16,6 @@
         workspaces {
           name = "workspace16"
         }
+        token = "nzRfitwaWGQFAA.atlasv1.1I6GmrUpJIIdIGr3208bruFloKj9RGW97CrRHTsdkfyOQ9cko09jRYjLB1eLOOW5JQ4"
       }
     }
