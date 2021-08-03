@@ -3,7 +3,7 @@ variable "nirmata_token"{
 } 
 
 locals {
-  name-sufix = "master12" // !!! change also in terraform.yaml
+  name-sufix = "master3" // !!! change also in terraform.yaml
 }
 
 
