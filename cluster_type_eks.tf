@@ -3,7 +3,7 @@ variable "nirmata_token"{
 } 
 
 locals {
-  name-sufix = "master3" // !!! change also in terraform.yaml
+  name-eks = "eks" // !!! change also in terraform.yaml
 }
 
 
@@ -14,7 +14,7 @@ provider "nirmata" {
      url = "https://nirmata.io"
 }
 resource "nirmata_cluster_type_eks" "eks-cluster-tf-test-automation" {
-  name                      = "cluster-type-eks-test-dummy04-${local.name-sufix}"
+  name                      = "cluster-type-eks-test-dummy-${local.name-sufix}"
   version                   = "1.18"
   credentials               = "nirmata-aws-dev"
   region                    = "us-west-1"
@@ -49,4 +49,68 @@ resource "nirmata_cluster" "eks-cluster-test-automation" {
       min_count = 2
       max_count = 4
    }
+}
+
+#  A ClusterType contains reusable configuration to create clusters.
+resource "nirmata_cluster_type_gke" "gke-cluster-type" {
+  name                       = "tf-gke-cluster-type-${local.name-sufix}" 
+  version                    = "1.19.10-gke.1600"
+  credentials                = "terraform-gcp"
+  location_type              = "Zonal"
+  project                    = "nirmata-production-demos"
+  zone                       = "us-west1-a"
+  network                    = "default"
+  subnetwork                 = "default"
+  enable_cloud_run           = false
+  enable_http_load_balancing = false
+  allow_override_credentials = true
+  channel                    = "Stable"
+  auto_sync_namespaces       = true
+  system_metadata = {
+    cluster = "gke"
+  }
+  cluster_field_override = [ "enableWorkloadIdentity","subnetwork","workloadPool","network"]
+  nodepool_field_override = [ "diskSize","serviceAccount","machineType"]
+  nodepools {
+    machine_type             = "g1-small"
+    disk_size                = 110
+    enable_preemptible_nodes = true
+    #service_account          = ""
+    auto_upgrade             = true
+    auto_repair              = true
+    max_unavailable          = 1
+    max_surge                = 0
+    node_annotations = {
+      node = "annotate"
+    }
+  }
+#  vault_auth {
+#     name             = "vault-auth"
+#     path             = "nirmata/$(cluster.name)"
+#     addon_name       = "vault-agent-injector"
+#     credentials_name = "vault-lab"
+#     delete_auth_path     = "true"
+#     roles {
+#       name                 = "datadog-agent"
+#       service_account_name = "datadog-agent"
+#       namespace            = "datadog-agent"
+#       policies             = "nirmata"
+#     }
+#   }
+}
+resource "nirmata_cluster" "eks-cluster-1" {  
+  name                 = "tf-cluster-gke-test-${local.name-sufix}"
+  cluster_type         = nirmata_cluster_type_gke.gke-cluster-type.name
+   nodepools {
+      node_count                = 1
+   }
+   system_metadata = {
+    cluster = "gke"
+    test    = "1test"
+  }
+  labels = {
+    label1 = "tes-vault1"
+    label2 = "tes-vault2"
+    label3 = "tes-vault3"
+  }
 }
