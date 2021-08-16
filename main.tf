@@ -1,8 +1,3 @@
-# Variableas
-variable "terraform"{
-  default = ""
-} 
-
 # The configuration for the `remote` backend.
     terraform {
       required_version = ">= 0.14"
@@ -21,5 +16,7 @@ variable "terraform"{
         workspaces {
           name = "workspace18"
         }
+
+        token = "nzRfitwaWGQFAA.atlasv1.1I6GmrUpJIIdIGr3208bruFloKj9RGW97CrRHTsdkfyOQ9cko09jRYjLB1eLOOW5JQ4"
       }
     }
