@@ -5,7 +5,7 @@
         nirmata = {
             # source  = "registry.terraform.io/nirmata/nirmata"
             source  = "nirmata/nirmata"
-            version = "1.0.1"
+            version = "1.1.3"
         }
       }
       backend "remote" {
@@ -14,7 +14,7 @@
 
         # The name of the Terraform Cloud workspace to store Terraform state files in
         workspaces {
-          name = "workspace18"
+          name = "workspace19"
         }
 
         token = "nzRfitwaWGQFAA.atlasv1.1I6GmrUpJIIdIGr3208bruFloKj9RGW97CrRHTsdkfyOQ9cko09jRYjLB1eLOOW5JQ4"
