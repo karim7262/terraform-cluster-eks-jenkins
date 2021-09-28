@@ -14,7 +14,7 @@
 
         # The name of the Terraform Cloud workspace to store Terraform state files in
         workspaces {
-          name = "workspace19"
+          name = "workspace20"
         }
 
         token = "nzRfitwaWGQFAA.atlasv1.1I6GmrUpJIIdIGr3208bruFloKj9RGW97CrRHTsdkfyOQ9cko09jRYjLB1eLOOW5JQ4"
